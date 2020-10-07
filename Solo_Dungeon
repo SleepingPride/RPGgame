@@ -1,0 +1,677 @@
+import java.util.Random;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
+public class RPG_GAME {
+
+	public static void main(String[] args) 
+	{
+		ROLES ass = new ROLES();
+		ass.str = 9;
+		ass.dex = 15;
+		ass.vit = 11;
+		ass.ntl = 7;
+		ass.men = 5;
+		ass.FI = "Dagger";
+		
+		ROLES war = new ROLES();
+		war.str = 13;
+		war.dex = 11;
+		war.vit = 12;
+		war.ntl = 5;
+		war.men = 6;
+		war.FI = "Short Sword";
+		
+		ROLES mag = new ROLES();
+		mag.str = 5;
+		mag.dex = 7;
+		mag.vit = 9;
+		mag.ntl = 15;
+		mag.men = 11;
+		mag.FI = "Spellbook";
+		
+		ROLES ran = new ROLES();
+		ran.str = 7;
+		ran.dex = 15;
+		ran.vit = 10;
+		ran.ntl = 5;
+		ran.men = 11;
+		ran.FI = "Bow";
+		
+		ROLES plyr = new ROLES();
+		plyr.str = 7;
+		plyr.dex = 15;
+		plyr.vit = 10;
+		plyr.ntl = 5;
+		plyr.men = 11;
+		
+		boolean game=true;
+		boolean indungeon=true;
+		boolean boss;
+		boolean enemy;
+		boolean hit;
+		boolean turn;
+		int relay;
+		int rndom;
+		int gold=0;
+		double health;
+		double maxH;
+		double mana;
+		double maxM;
+		double attack;
+		int accuracy;
+		int evasion;
+		double skill;
+		int bread=4;
+		int waterbottle=5;
+		double ehealth;
+		int eattack;
+		int eaccuracy;
+		int eevasion;
+		double bhealth;
+		int battack;
+		int baccuracy;
+		int bevasion;
+		String start;
+		String name;
+		String role;
+		String battle;
+		
+		System.out.println("SOLO_DUNGEON!");
+		System.out.println("Input_Start_to_Play_the_Game");
+		while (game)
+		{
+			Scanner a = new Scanner(System.in);
+			start = a.nextLine();
+			start = start.toUpperCase();
+			if (start.equals("START"))
+			{
+				game=false;
+			}
+		}
+		game = true;
+		System.out.println("\nHello Player!");
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Welcome to Solo Dungeon!");
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("In this world, you will be playing as an aspiring adventurer!");
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Before we set off, I would like to know your name.");
+		System.out.print("Name:");
+		
+		Scanner b = new Scanner(System.in);
+		name = b.nextLine();
+		
+		System.out.println("\n"+name + "... Interesting...");
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\nAbout your role, which one of these do you want to pick?");
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("{Assassin}\nSTR:09     DEX:15\nVIT:11     INT:07\nMEN:05\n" );
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("{Warrior}\nSTR:13     DEX:11\nVIT:12     INT:05\nMEN:06\n" );
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("{Mage}\nSTR:05     DEX:07\nVIT:09     INT:15\nMEN:11\n" );
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("{Ranger}\nSTR:07     DEX:15\nVIT:10     INT:05\nMEN:11\n" );
+		try {
+			TimeUnit.SECONDS.sleep(1);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		while(game)
+		{
+			System.out.print("Role:");
+			Scanner c = new Scanner(System.in);
+			role = c.nextLine();
+			role = role.toUpperCase();
+			if(role.equals("ASSASSIN"))
+			{
+				System.out.println("You have chosen Assassin.");
+				game = false;
+				plyr.str = ass.str;
+				plyr.dex = ass.dex;
+				plyr.vit = ass.vit;
+				plyr.ntl = ass.ntl;
+				plyr.men = ass.men;
+				plyr.FI = ass.FI;
+			}
+			else if(role.equals("WARRIOR"))
+			{
+				System.out.println("You have chosen Warrior.");
+				game = false;
+				plyr.str = war.str;
+				plyr.dex = war.dex;
+				plyr.vit = war.vit;
+				plyr.ntl = war.ntl;
+				plyr.men = war.men;
+				plyr.FI = war.FI;
+			}
+			else if(role.equals("RANGER"))
+			{
+				System.out.println("You have chosen Ranger.");
+				game = false;
+				plyr.str = ran.str;
+				plyr.dex = ran.dex;
+				plyr.vit = ran.vit;
+				plyr.ntl = ran.ntl;
+				plyr.men = ran.men;
+				plyr.FI = ran.FI;
+			}
+			else if(role.equals("MAGE"))
+			{
+				System.out.println("You have chosen Mage.");
+				game = false;
+				plyr.str = mag.str;
+				plyr.dex = mag.dex;
+				plyr.vit = mag.vit;
+				plyr.ntl = mag.ntl;
+				plyr.men = mag.men;
+				plyr.FI = mag.FI;
+			}	
+		}
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("You will now be departing in your journey. I wish you luck!");
+		System.out.println("\n{LOADING}");
+		try {
+			TimeUnit.SECONDS.sleep(4);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (int i=0;i<100;i++)
+		{
+			System.out.println("\n");
+		}
+		System.out.println("You wake up finding yourself inside a room of a cozy house.");
+		System.out.println("It's... warm. It's... refreshing");
+		System.out.println("When all of a sudden, you hear screaming from outside! Everyone seems to in a state of panick");
+		System.out.println("You went outside to investigate, just what all the ruckus is all about.");
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\nA dungeon has appeared just outside of the town!");
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\nEveryone is in awe by the sight they are seeing. It's unbelievable!");
+		System.out.println("Amidst the confusion, you can hear some people chatting.");
+		System.out.println("Look at that big structure! it must contain some sort of treasure, don't you think?");
+		System.out.println("Look's like some people think of this disaster as an opportunty to make money.");
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\nSuccumbed by curiosity, you set out to enter the dungeon.");
+		System.out.println("You went home first to prepare some items that you will be needing for your adventure!");
+		System.out.println("3 Bread, 5 Waterbottles, and a " + plyr.FI);
+		try {
+			TimeUnit.SECONDS.sleep(5);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\nYou hurriedly head to the dungeon. With the hopes of getting rich.");
+		try {
+			TimeUnit.SECONDS.sleep(2);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\nYou've entered the Dungeon.");
+		System.out.println("This whole thing looks sketchy, but you're already here. No backing out now.");
+		System.out.println("You saw a boar statue in the dungeons entrance.");
+		System.out.println("\nYou'll now enter Exploration Mode");
+		
+		health = plyr.vit*8;
+		maxH=health;
+		mana = plyr.ntl*10;
+		maxM=mana;
+		attack = plyr.str;
+		accuracy = plyr.dex+80;
+		evasion = plyr.men;
+		skill = plyr.str*2 + plyr.ntl;
+		
+		ehealth=40;
+		eattack=14;
+		eaccuracy=100-evasion;
+		
+		bhealth=100;
+		battack=30;
+		baccuracy=100-evasion;
+		
+		System.out.println("Input_Enter_to_Enter_the_Dungeon");
+		game=true;
+		while (game)
+		{
+			Scanner f = new Scanner(System.in);
+			start = f.nextLine();
+			start = start.toUpperCase();
+			if (start.equals("ENTER"))
+			{
+				game=false;
+			}
+		}
+		
+		while(indungeon)
+		{
+			
+			try {
+				TimeUnit.SECONDS.sleep(1);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			System.out.println("\n");
+			
+			boss=false;
+			enemy=false;
+			
+			ehealth=30;
+			eattack=7;
+			eaccuracy=65;
+			eevasion=5;
+			
+			System.out.println("Exploring the dungeon - Gold:"+gold);
+			
+			Random random = new Random();
+			rndom = random.nextInt(100);
+			if(rndom%10==1)
+			{
+				System.out.println("You encounter the boss of this dungeon!");
+				System.out.println("Kill it and you'll successfully claim this dungeon.");
+				boss = true;
+			}
+			else if(rndom%10==2)
+			{
+				System.out.println("\nYou've encountered and enemy!");
+				enemy = true;
+			}
+			else if(rndom%10==3)
+			{
+				System.out.println("\nYou've encountered and enemy!");
+				enemy = true;
+			}
+			else if(rndom%10==4)
+			{
+				System.out.println("\nYou've encountered and enemy!");
+				enemy = true;
+			}
+			else if(rndom%10==5)
+			{
+				System.out.println("\nYou found some loot!");
+				Random loot = new Random();
+				rndom = loot.nextInt(100);
+				gold += rndom;
+			}
+			else if(rndom%10==6)
+			{
+				System.out.println("\nYou found some loot!");
+				Random loot = new Random();
+				rndom = loot.nextInt(100);
+				gold += rndom;
+			}
+			else if(rndom%10==7)
+			{
+				System.out.println("\nYou found some loot!");
+				Random loot = new Random();
+				rndom = loot.nextInt(100);
+				gold += rndom;
+			}
+			while(boss)
+			{
+				System.out.println("\n");
+				System.out.println("Health:"+health);
+				System.out.println("Boss Health:"+bhealth);
+				System.out.println("{Attack}   {Skill}   {Eat}+60hp   {Drink}+80mana");
+				
+				turn=true;
+				while(turn)
+				{
+					System.out.print("Input:");
+					Scanner d = new Scanner(System.in);
+					battle = d.nextLine();
+					battle = battle.toUpperCase();
+					if(battle.equals("ATTACK"))
+					{
+						hit = false;
+						Random damage = new Random();
+						rndom = damage.nextInt(1000);
+						for (relay=0;relay<accuracy;relay++)
+						{
+							if(rndom%100==relay)
+							{
+								hit=true;
+							}
+						}
+						if(hit)
+						{
+							System.out.println("Enemy damaged");
+							bhealth = bhealth - attack;
+						}
+						else
+						{
+							System.out.println("You Missed!");
+						}
+						turn=false;
+					}
+					else if(battle.equals("SKILL"))
+					{
+						if(mana-maxM/3>=0)
+						{
+							mana = mana - maxM/3;
+							hit = false;
+							Random damage = new Random();
+							rndom = damage.nextInt(1000);
+							for (relay=0;relay<accuracy;relay++)
+							{
+								if(rndom%100==relay)
+								{	
+									hit=true;
+								}
+							}
+							if(hit)
+							{
+								System.out.println("Boss damaged");
+								bhealth = bhealth - skill;
+							}
+							else
+							{
+								System.out.println("You Missed!");
+							}
+							turn=false;
+						}
+						else
+						{
+							System.out.println("You don't have enough mana.");
+						}
+					}
+					else if(battle.equals("EAT"))
+					{
+						if(bread>0)
+						{
+							if(health+60>=maxH)
+							{
+								health=maxH;
+							}
+							else
+							{
+								health=health+60;
+							}
+							turn=false;
+						}
+						else
+						{
+							System.out.println("You don't have any bread left.");
+						}
+					}
+					else if(battle.equals("DRINK"))
+					{
+						if(waterbottle>0)
+						{
+							if(mana+80>=maxM)
+							{
+								mana=maxM;
+							}
+							else
+							{
+								mana=mana+60;
+							}
+							turn=false;
+						}
+						else
+						{
+							System.out.println("You don't have any waterbottle left.");
+						}
+						
+					}
+				}
+				
+				if(bhealth<=0)
+				{
+					System.out.println("You killed the Boss.");
+					boss=false;
+					indungeon=false;
+				}
+				else
+				{
+					hit = false;
+					Random damage = new Random();
+					rndom = damage.nextInt(1000);
+					
+					for (relay=0;relay<eaccuracy;relay++)
+					{
+						if(rndom%100==relay)
+						{
+							hit=true;
+						}
+					}
+					if(hit==true)
+					{
+						System.out.println("You've been damaged!");
+						health = health - attack;
+					}
+					else
+					{
+						System.out.println("Enemy Missed!");
+					}
+				}
+				if(health<=0)
+				{
+					System.out.println("You died.");
+					boss=false;
+					indungeon=false;
+				}
+			}
+			
+			while(enemy)
+			{
+				System.out.println("\n");
+				System.out.println("Health:"+health);
+				System.out.println("Enemy Health:"+ehealth);
+				System.out.println("{Attack}   {Skill}   {Eat}+60hp   {Drink}+80mana");
+				
+				turn=true;
+				while(turn)
+				{
+					System.out.print("Input:");
+					Scanner d = new Scanner(System.in);
+					battle = d.nextLine();
+					battle = battle.toUpperCase();
+					if(battle.equals("ATTACK"))
+					{
+						hit = false;
+						Random damage = new Random();
+						rndom = damage.nextInt(1000);
+						for (relay=0;relay<accuracy;relay++)
+						{
+							if(rndom%100==relay)
+							{
+								hit=true;
+							}
+						}
+						if(hit)
+						{
+							System.out.println("Enemy damaged");
+							ehealth = ehealth - attack;
+						}
+						else
+						{
+								System.out.println("You Missed!");
+						}
+						turn=false;
+					}
+					else if(battle.equals("SKILL"))
+					{
+						if(mana-maxM/3>=0)
+						{
+							mana = mana - maxM/3;
+							hit = false;
+							Random damage = new Random();
+							rndom = damage.nextInt(1000);
+							for (relay=0;relay<accuracy;relay++)
+							{
+								if(rndom%100==relay)
+								{
+									hit=true;
+								}
+							}
+							if(hit)
+							{
+								System.out.println("Enemy damaged");
+								ehealth = ehealth - skill;
+							}
+							else
+							{
+								System.out.println("You Missed!");
+							}
+							turn=false;
+						}
+						else
+						{
+							System.out.println("You don't have enough mana.");
+						}
+					}
+					else if(battle.equals("EAT"))
+					{
+						if(bread>0)
+						{
+							if(health+60>=maxH)
+							{
+								health=maxH;
+							}
+							else
+							{
+								health=health+60;
+							}
+							turn=false;
+						}
+						else
+						{
+							System.out.println("You don't have any bread left.");
+						}
+					}
+					else if(battle.equals("DRINK"))
+					{
+						if(waterbottle>0)
+						{
+							if(mana+80>=maxM)
+							{
+								mana=maxM;
+							}
+							else
+							{
+								mana=mana+60;
+							}
+							turn=false;
+						}
+						else
+						{
+							System.out.println("You don't have any waterbottle left.");
+						}
+						
+					}
+				}
+				
+				if(ehealth<=0)
+				{
+					System.out.println("You have killed the enemy.");
+					enemy=false;
+				}
+				else
+				{
+					hit = false;
+					Random damage = new Random();
+					rndom = damage.nextInt(1000);
+					
+					for (relay=0;relay<eaccuracy;relay++)
+					{
+						if(rndom%100==relay)
+						{
+							hit=true;
+						}
+					}
+					if(hit==true)
+					{
+						System.out.println("You've been damaged!");
+						health = health - attack;
+					}
+					else
+					{
+						System.out.println("Enemy Missed!");
+					}
+					if(health<=0)
+					{
+						System.out.println("You died.");
+						enemy=false;
+						indungeon=false;
+					}
+				}
+			}
+		}
+		if(health>0)
+		{
+			System.out.println("You have successfully claimed the dungeon, earning "+gold+" gold in the process.");
+		}
+		else
+		{
+			System.out.println("Good Luck Next Time!");
+		}
+		
+	}
+
+}
